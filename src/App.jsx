@@ -14,14 +14,20 @@ function App() {
     const { phone, ...others } = data
     const phoneSplited = phone.split(' ').join('')
 
-    axios
-      .post('https://b7a8-84-54-70-123.ngrok-free.app/monday', {
-        ...others,
-        phone: phoneSplited,
-        chat_id: chatId,
-      })
-      .then(reset(), navigate('/success'))
-      .catch((err) => console.log(err))
+    if (phoneSplited.length == 12) {
+      axios
+        .post('https://tg-notify-devteam-a9d6d4f8.koyeb.app/monday/', {
+          ...others,
+          phone: phoneSplited,
+          chat_id: chatId,
+        })
+        .then(() => {
+          navigate('/success')
+        })
+        .catch((err) => console.log(err))
+      return
+    }
+    window.alert('Введите номер телефона')
   }
 
   return (
@@ -52,7 +58,7 @@ function App() {
 
           <InputMask
             mask="\9\98 99 999 99 99"
-            maskChar="_"
+            maskChar=" "
             alwaysShowMask={true}
             placeholder="Номер телефона"
             {...register('phone')}
