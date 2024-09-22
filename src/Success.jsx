@@ -6,14 +6,16 @@ export default function Success() {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        textAlign:'center',
+        verticalAlign: 'center',
+        color: 'white',
+        marginTop:'50%'
       }}
     >
       <h3>Заявка успешно обработана</h3> <br />
-
-      <button onClick={() => navigate(-1)}>Вернуться</button>
+      <div>
+        <button onClick={() => navigate(-1)}>Вернуться</button>
+      </div>
     </div>
   )
 }
